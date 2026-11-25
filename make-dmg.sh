@@ -72,5 +72,5 @@ hdiutil convert "$RW_DMG" -format UDZO -o "$DMG_PATH" >/dev/null
 rm -f "$RW_DMG"
 rm -rf "$STAGE"
 
-shasum -a 256 "$DMG_PATH" | tee "${DMG_PATH}.sha256"
+(cd dist && shasum -a 256 "$(basename "$DMG_PATH")") | tee "${DMG_PATH}.sha256"
 echo "▸ Built ${DMG_PATH}"
